@@ -1,0 +1,19 @@
+{
+  "name": "tbtc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@keep-network/tbtc-v2.ts": "^2.4.1",
+    "dotenv": "^16.4.5",
+    "ethers": "^5.7.2",
+    "prompt-sync": "^4.2.0"
+  }
+}

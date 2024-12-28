@@ -1,0 +1,135 @@
+{
+  "status": "minted",
+  "label": "a1",
+  "etherSignerPrivKey": "7a99fd96690f31989e375cde336cd1b684c8fa7a19ebc8d345a219f107937c87",
+  "bitcoinRecoveryAddress": "tb1qc6gwwcqdk4uphxy3dahpvcvk609wnc5vsdk7yh",
+  "bitcoinRecoveryAddressPrivKey": "5c019913c36f73da6a037a9d84e8bf92d9e491a79b9edbd487cd0922d0b8b48b",
+  "depositReceipt": {
+    "depositor": {
+      "identifierHex": "d9ec972475e7a82512c29993a7f5c40a7037c774"
+    },
+    "blindingFactor": {
+      "_hex": {
+        "type": "Buffer",
+        "data": [
+          16,
+          221,
+          193,
+          76,
+          211,
+          155,
+          189,
+          124
+        ]
+      }
+    },
+    "walletPublicKeyHash": {
+      "_hex": {
+        "type": "Buffer",
+        "data": [
+          239,
+          90,
+          41,
+          70,
+          242,
+          148,
+          241,
+          116,
+          42,
+          119,
+          156,
+          154,
+          192,
+          52,
+          188,
+          63,
+          165,
+          212,
+          23,
+          184
+        ]
+      }
+    },
+    "refundPublicKeyHash": {
+      "_hex": {
+        "type": "Buffer",
+        "data": [
+          198,
+          144,
+          231,
+          96,
+          13,
+          181,
+          120,
+          27,
+          152,
+          145,
+          111,
+          110,
+          22,
+          97,
+          150,
+          211,
+          202,
+          233,
+          226,
+          140
+        ]
+      }
+    },
+    "refundLocktime": {
+      "_hex": {
+        "type": "Buffer",
+        "data": [
+          191,
+          147,
+          209,
+          104
+        ]
+      }
+    }
+  },
+  "bitcoinDepositAddress": "tb1qs0rju52lnz2l3k0n56zduwdlgzk02nhk87rdtsjpvuw4q0pg0q4qmp2r8c",
+  "bitcoinSendMethod": "bitcoin-cli",
+  "bitcoinAmount": "0.05",
+  "bitcoinTxHash": "3b8a0cff8e79e683c3d488e0067f7c9953cb5947eb5ff5505fafac95842d3259",
+  "mintTxHash": {
+    "_hex": {
+      "type": "Buffer",
+      "data": [
+        195,
+        31,
+        7,
+        14,
+        63,
+        73,
+        134,
+        129,
+        43,
+        3,
+        134,
+        140,
+        176,
+        57,
+        17,
+        29,
+        121,
+        187,
+        141,
+        46,
+        103,
+        73,
+        119,
+        115,
+        180,
+        196,
+        94,
+        202,
+        198,
+        43,
+        195,
+        67
+      ]
+    }
+  }
+}
