@@ -1,0 +1,96 @@
+{
+  "status": "bitcoin sent",
+  "label": "m25-01",
+  "etherSignerPrivKey": "7a99fd96690f31989e375cde336cd1b684c8fa7a19ebc8d345a219f107937c87",
+  "bitcoinRecoveryAddress": "tb1qhwktq7za87hjuq3937tuxwe6vnyljmn5gk59tc",
+  "bitcoinRecoveryAddressPrivKey": "d289dd21f1c7abcfac2a7bbb7e5f82b82474db08907b810bfd489ed47d432fe6",
+  "depositReceipt": {
+    "depositor": {
+      "identifierHex": "d9ec972475e7a82512c29993a7f5c40a7037c774"
+    },
+    "blindingFactor": {
+      "_hex": {
+        "type": "Buffer",
+        "data": [
+          196,
+          139,
+          62,
+          200,
+          181,
+          208,
+          185,
+          87
+        ]
+      }
+    },
+    "walletPublicKeyHash": {
+      "_hex": {
+        "type": "Buffer",
+        "data": [
+          239,
+          90,
+          41,
+          70,
+          242,
+          148,
+          241,
+          116,
+          42,
+          119,
+          156,
+          154,
+          192,
+          52,
+          188,
+          63,
+          165,
+          212,
+          23,
+          184
+        ]
+      }
+    },
+    "refundPublicKeyHash": {
+      "_hex": {
+        "type": "Buffer",
+        "data": [
+          187,
+          172,
+          176,
+          120,
+          93,
+          63,
+          175,
+          46,
+          2,
+          37,
+          143,
+          151,
+          195,
+          59,
+          58,
+          100,
+          201,
+          249,
+          110,
+          116
+        ]
+      }
+    },
+    "refundLocktime": {
+      "_hex": {
+        "type": "Buffer",
+        "data": [
+          29,
+          249,
+          228,
+          104
+        ]
+      }
+    }
+  },
+  "bitcoinDepositAddress": "tb1qn5ywpekq5wdphcajw86ruucmlerlatv8gc7vwwtr36xfmzvyl84qf4ggu0",
+  "bitcoinSendMethod": "bitcoin-cli",
+  "bitcoinAmount": "1",
+  "bitcoinTxHash": "c0ee7146b8ee01b5ba1798cd59380b45c0a9815026e66da58d921a9b83a5f50e"
+}

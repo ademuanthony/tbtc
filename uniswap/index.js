@@ -1,4 +1,4 @@
-import { ethers } from 'ethers';
+import { ethers, hexlify, parseEther } from 'ethers';
 import FACTORY_ABI from './abis/factory.json' assert { type: 'json' };
 import QUOTER_ABI from './abis/quoter.json' assert { type: 'json' };
 import SWAP_ROUTER_ABI from './abis/swaprouter.json' assert { type: 'json' };
@@ -10,11 +10,11 @@ import readline from 'readline/promises';
 
 // Deployment Addresses
 const POOL_FACTORY_CONTRACT_ADDRESS =
-  '0x0227628f3F023bb0B980b67D528571c95c6DaC1c';
-const QUOTER_CONTRACT_ADDRESS = '0xEd1f6473345F45b75F8179591dd5bA1888cf2FB3';
+  '0x1F98431c8aD98523631AE4a59f267346ea31F984';
+const QUOTER_CONTRACT_ADDRESS = '0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6';
 const SWAP_ROUTER_CONTRACT_ADDRESS =
-  '0x3bFA4769FB09eefC5a80d6E87c3B9C650f7Ae48E';
-const POSITION_MANAGER_ADDRESS = '0x1238536071E1c677A632429e3655c799b22cDA52'; // Replace with actual address
+  '0xE592427A0AEce92De3Edee1F18E0157C05861564';
+const POSITION_MANAGER_ADDRESS = '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'; // Replace with actual address
 
 // Provider, Contract & Signer Instances
 const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
@@ -32,8 +32,8 @@ const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
 // Token Configuration
 const WETH = {
-  chainId: 11155111,
-  address: '0xfff9976782d46cc05630d1f6ebab18b2324d6b14',
+  chainId: 1,
+  address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
   decimals: 18,
   symbol: 'WETH',
   name: 'Wrapped Ether',
@@ -43,8 +43,8 @@ const WETH = {
 };
 
 const TBTC = {
-  chainId: 11155111,
-  address: '0x517f2982701695D4E52f1ECFBEf3ba31Df470161',
+  chainId: 1,
+  address: '0x8daebade922df735c38c80c7ebd708af50815faa',
   decimals: 18,
   symbol: 'TBTC',
   name: 'tBTC',
@@ -54,8 +54,8 @@ const TBTC = {
 };
 
 const USDC = {
-  chainId: 11155111,
-  address: '0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238',
+  chainId: 1,
+  address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
   decimals: 6,
   symbol: 'USDC',
   name: 'USD//C',
@@ -63,6 +63,23 @@ const USDC = {
   isNative: true,
   wrapped: false,
 };
+
+async function fundWalletForTest(address) {
+  // Parse and convert the amount to hexadecimal
+  const amountInEther = '5';
+  const parsedAmount = ethers.parseEther(amountInEther); // Convert to Wei (bigint)
+  const hexAmount = `0x${parsedAmount.toString(16)}`; // Convert bigint to hex string
+
+  console.log('hex amount:', hexAmount);
+
+  // Initialize the provider
+  const provider = new ethers.JsonRpcProvider(process.env.ETH_RPC);
+
+  // Call anvil_setBalance to fund the wallet
+  await provider.send('anvil_setBalance', [address, hexAmount]);
+
+  console.log(`Funded wallet ${address} with ${amountInEther} Ether`);
+}
 
 async function approveToken(tokenAddress, tokenABI, amount, wallet) {
   try {
@@ -315,12 +332,15 @@ async function addLiquidity(tokenA, tokenB, amountA, amountB, signer) {
 
 // Modify main function to include menu
 async function main() {
+
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
   try {
+    console.log('Funding Wallet...', signer.address, 'with 5 ETH');
+    await fundWalletForTest(signer.address, '5');
     console.log('\nWhat would you like to do?');
     console.log('1. Swap Tokens');
     console.log('2. Add Liquidity');
@@ -379,6 +399,8 @@ async function main() {
           tokenOut,
           amountIn
         );
+
+        console.log('Quoted Amount Out: ', quotedAmountOut);
 
         const params = await prepareSwapParams(
           poolContract,

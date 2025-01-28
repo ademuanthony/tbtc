@@ -14,7 +14,7 @@ const prompt = require('prompt-sync')();
 const FEE_RATES = {
   testnet: {
     default: 3500, // High rate for testnet to ensure confirmation
-    urgent: 4000,
+    urgent: 7500,
   },
   mainnet: {
     default: 15, // Normal priority
