@@ -38,6 +38,14 @@ export const TBTC_TOKEN = new Token(
   'tBTC'
 )
 
+export const WBTC_TOKEN = new Token(
+  ChainId.MAINNET,
+  '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+  8,
+  'WBTC',
+  'Wrapped Bitcoin'
+)
+
 // ABI's
 
 export const ERC20_ABI = [

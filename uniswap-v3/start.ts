@@ -1,6 +1,6 @@
 import readline from 'readline';
 import { getStdInput } from './libs/readline';
-import { TBTC_TOKEN, USDC_TOKEN, WETH_TOKEN } from './libs/constants';
+import { TBTC_TOKEN, USDC_TOKEN, WBTC_TOKEN, WETH_TOKEN } from './libs/constants';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { createTrade, executeTrade } from './libs/trading';
 import { schedule } from './schedule';
@@ -25,13 +25,14 @@ const main = async () => {
         console.log('1. WETH');
         console.log('2. TBTC');
         console.log('3. USDC');
+        console.log('4. WBTC');
 
         const tokenInChoice = await getStdInput(
-          '\nSelect input token (1-3): ',
+          '\nSelect input token (1-4): ',
           rl
         );
         const tokenOutChoice = await getStdInput(
-          'Select output token (1-3): ',
+          'Select output token (1-4): ',
           rl
         );
         const inputAmount = await getStdInput('Enter amount to swap: ', rl);
@@ -41,6 +42,7 @@ const main = async () => {
           1: WETH_TOKEN,
           2: TBTC_TOKEN,
           3: USDC_TOKEN,
+          4: WBTC_TOKEN,
         };
 
         const tokenIn = tokenMap[tokenInChoice];
