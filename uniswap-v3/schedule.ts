@@ -5,10 +5,10 @@ import { WETH_TOKEN } from "./libs/constants";
 import { TBTC_TOKEN } from "./libs/constants";
 import { executeTrade } from "./libs/trading";
 
-const SECOND = 1000;
-const MINUTE = SECOND * 60;
-const HOUR = MINUTE * 60;
-const DAY = HOUR * 24;
+export const SECOND = 1000;
+export const MINUTE = SECOND * 60;
+export const HOUR = MINUTE * 60;
+export const DAY = HOUR * 24;
 
 export const schedule = {
   enabled: false,
