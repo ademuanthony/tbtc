@@ -6,7 +6,6 @@ import {
   TradeType,
 } from '@uniswap/sdk-core'
 import {
-  FeeAmount,
   Pool,
   Route,
   SwapOptions,
@@ -37,6 +36,8 @@ import { getQuote } from './quote'
 export type TokenTrade = Trade<Token, Token, TradeType>
 
 export async function createTrade(tokenIn: Token, tokenOut: Token, poolFee: number, amountIn: number): Promise<TokenTrade> {
+  console.log(`Converting ${amountIn} ${tokenIn.symbol} to ${tokenOut.symbol}`)
+
   const poolInfo = await getPoolInfo(tokenIn, tokenOut, poolFee )
 
   const pool = new Pool(
@@ -55,8 +56,8 @@ export async function createTrade(tokenIn: Token, tokenOut: Token, poolFee: numb
   )
 
   // TODO: add slippage tolerance
-  const amountOut = await getQuote(tokenIn, tokenOut, FeeAmount.MEDIUM, amountIn)
-  console.log(`Amount out: ${toReadableAmount(amountOut, tokenOut.decimals)}`);
+  const amountOut = await getOutputQuote(swapRoute, tokenIn, amountIn)
+  console.log(`Amount out: ${amountOut}`);
 
   const  outputAmount = CurrencyAmount.fromRawAmount(
     tokenOut,

@@ -4,6 +4,7 @@ import { TBTC_TOKEN, USDC_TOKEN, WBTC_TOKEN, WETH_TOKEN } from './libs/constants
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { createTrade, executeTrade } from './libs/trading';
 import { HOUR, schedule } from './schedule';
+import { formatInterval } from './libs/conversion';
 const main = async () => {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -11,7 +12,7 @@ const main = async () => {
   });
 
   if (schedule.enabled) {
-    console.log('Schedule enabled. Running every ', schedule.interval / HOUR, ' hours');
+    console.log('Schedule enabled. Running every ', formatInterval(schedule.interval));
     console.log('To perform a manual trade, run the script without the schedule enabled');
     console.log('Modify the schedule in the schedule.ts file');
     

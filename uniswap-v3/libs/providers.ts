@@ -68,6 +68,8 @@ async function sendTransactionViaWallet(
 
   console.log(`Transaction hash: ${txRes.hash}`);
 
+  return TransactionState.Sent
+
   while (receipt === null) {
     try {
       const receipt = await provider.getTransactionReceipt(txRes.hash)

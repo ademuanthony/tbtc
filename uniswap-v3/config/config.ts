@@ -35,7 +35,7 @@ export const CurrentConfig: ExampleConfig = {
   env: Environment.LOCAL,
   rpc: {
     local: 'http://localhost:8545',
-    mainnet: '',
+    mainnet: 'https://site1.moralis-nodes.com/eth/38758c4032ae4fa8a1781971271f26d3',
   },
   wallet: {
     address: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',

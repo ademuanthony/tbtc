@@ -23,7 +23,7 @@ const FEE_RATES = {
 };
 
 // Helper function to get appropriate fee rate
-function getFeeRate(urgent: boolean = false): number {
+function getFeeRate(urgent: boolean = true): number {
   const network = process.env.NETWORK === 'testnet' ? 'testnet' : 'mainnet';
   return urgent ? FEE_RATES[network].urgent : FEE_RATES[network].default;
 }
@@ -174,6 +174,7 @@ const initiateNewMint = async () => {
     mint.bitcoinRecoveryAddress
   );
 
+
   // Store deposit receipt
   mint.depositReceipt = deposit.getReceipt();
 
@@ -258,7 +259,7 @@ async function waitForTransactionConfirmation(
   console.log('\nWaiting for transaction confirmation...');
   let confirmations = 0;
   let attempts = 0;
-  const maxAttempts = 60; // Will wait up to 60 minutes
+  const maxAttempts = 60 * 60; // Will wait up to 1 hour
 
   while (confirmations < 1 && attempts < maxAttempts) {
     try {
@@ -671,6 +672,5 @@ async function initiateRefund(mint: Mint) {
     console.log('3. The deposit was not already minted or refunded');
   }
 }
-
 
 main();
